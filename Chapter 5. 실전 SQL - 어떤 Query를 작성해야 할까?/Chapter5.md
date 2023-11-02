@@ -1,7 +1,7 @@
 # UMC_SpringBoot_Study
 
 <br>
-#✅ JOIN 연산이란?
+# ✅ JOIN 연산이란?
 JOIN은 SQL의 문법 중 하나로, 두 테이블을 엮어 원하는 데이터를 추출하기 위해 쓰는 문법입니다 <br>
 연산을 통해 여러 테이블에서 가져온 레코드들을 조합해 하나의 결과를 만들어낼 수 있습니다 <br><br>
 JOIN의 종류로는 <br>
@@ -34,39 +34,85 @@ FROM <첫 번째 테이블(LEFT 테이블)>
 <br>
     ➡️예를 들어, LEFT OUTER JOIN을 할 때, 첫 번째 테이블의 값은 모두 유지하고, ON 조건에 부합하는 두 번째 테이블의 결과를 JOIN한다고 볼 수 있습니다 <br> 또한 첫 번째 테이블의 레코드 중 ON 조건에 부합하지 않는 레코드들은 `NULL`값을 채워 반환합니다
 <br>
+
 ### 3️⃣ SELF JOIN
 자기 자신을 JOIN하는 문법으로, 테이블 하나 가지고 JOIN문을 사용하면 됩니다
 
 ### 🔎 Distinct
 mysql에서 지원하는 문법으로 레코드의 중복을 제거해주는 문법입니다 <br>
 `"select distinct o from Order o"` 와 같이 사용하면 되지만, 페이징을 하지 못한다는 단점이 있습니다
+<br><br>
 
 
 <hr>
-✏️ 4주차 워크북을 기반으로 쿼리 작성하기 <br>
+# ✏️ 4주차 워크북을 기반으로 쿼리 작성하기 <br>
 
 
 ### 1. 내가 진행중, 진행 완료한 미션 모아서 보는 쿼리
 ```sql
 SELECT
+    m.Content
+    m.Point
+    um.status
+    m.store_id 
+//가게 이름 띄우기 ???
+//미션 테이블이랑 가게 아이디 조인해서 가게 이름 가져오기
+FROM
+    Mission as m
+JOIN UserMission as um
+    ON um.mission_id = m.Mission_id
+WHERE
+    um.User_id = User.User_id
 ``` 
 <br>
 
 
 ### 2. 리뷰 작성하는 쿼리
 ```sql
+SELECT
+    rc.comment
+    r.*
+FROM
+    Review as r
+JOIN ReviewComment as rc
+    rc.review_id = r.id
+WHERE
+    r.store_id = Store.store_id
 ``` 
 <br>
 
 ### 3. 홈 화면 쿼리
 (현재 선택 된 지역에서 도전이 가능한 미션 목록, 페이징 포함) <br>
 ```sql
+SELECT
+    User.address
+    m.content
+    m.point
+    m.deadline
+    s.store_name
+    //가게 카테고리 분류?
+FROM
+    MISSION as m
+JOIN Store as s
+    m.storeid = s.store_id
+WHERE
+    User.address = Region.region_id
+
+//Region.region_name을 select하려면 
+//어떻게 해야 하는지 ..
 ``` 
 <br>
 
 
 ### 4. 마이 페이지 화면 쿼리
 ```sql
+SELECT
+    u.name
+    u.email
+    u.phonenumber
+    u.point
+FROM
+    User as u
 ``` 
 <br>
 
