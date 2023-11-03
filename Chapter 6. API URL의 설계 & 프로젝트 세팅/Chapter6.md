@@ -1,0 +1,41 @@
+# UMC_SpringBoot_Study
+
+### ✅ API란?
+Application Programming Interface <br>
+간단히 요약하자면, 애플리케이션이 요청과 응답을 주고 받는 체계이며, 어떤 요청을 보내고 어떤 응답을 받아 어떤 데이터를 전달받을 수 있는지를 정리한 규격(interface)으로 볼 수 있습니다. <br>
+API는 사용자가 보다 쉽게 프로그래밍 할 수 있도록 도와주고 애플리케이션 간의 상호작용을 원활히 할 수 있도록 도와줍니다. <br>
+
+### ✅ REST API란?
+Representational State Transfer API <br>
+REST API는 HTTP를 기반으로 하는 웹 서비스 아키텍쳐로, <br>
+**HTTP URL**을 통해 자원을 명시하고, **HTTP Method**를 통해 자원에 대한 CRUD Operation을 명시해 통신하는 방법입니다. <br><br>
+- 장점 -> 서버와 클라이언트의 역할을 정확하게 분리할 수 있고, 의도하는 바를 쉽게 파악할 수 있음 <br>
+- 단점 -> HTTP Method의 형태가 제한적
+<br><br>
+**🔎 API EndPoint** -> 해당 API를 호출하기 위한 HTTP Method + URL  <br>
+
+### ✅ HTTP Method란?
+REST 방식으로 통신할 때 필요한 작업을 표시하는 방식으로, 서버가 수행해야 하는 동작을 지정하는 방법이다. <br>
+자주 사용하는 5가지 종류로는, <br>
+- GET -> 조회<br>
+- POST -> 생성 <br>
+- PUT -> 갱신(전체) <br>
+- PATCH -> 갱신(일부)<br>
+- DELETE -> 삭제 <br><br><br>
+**간단한 예제를 먼저 살펴보겠습니다.**<br>
+서버의 도메인 주소가 https://umc.com일 때, 사용자가 해당 주소에서 로그인을 하는 api endpoint는 <br> **POST/https://umc.com/users/login **로 표시할 수 있습니다. <br>
+
+end point로는 api가 어떤 동작을 수행할 것인지 쉽게 알 수 있습니다. <br>
+그러나, 실제 어떤 정보를 가지고 해당 동작을 수행할 것인지는 알 수 없죠. <br>
+이러한 실제 데이터들을 사용하기 위해, 세부적인 API 설계가 필요합니다 <br>
+
+<hr>
+
+## 세부적인 API 설계
+### 1️⃣ path variable
+api endpoint에 속하는 요소로, **하나의 특정 대상을 식별**할 때, {}로 식별 값을 넣어 서버에 전달하는 역할을 합니다. <br>
+`GET/users/articles/{articleId}` <br><br>
+
+### 2️⃣ query string
+### 3️⃣ request body
+### 4️⃣ request header
