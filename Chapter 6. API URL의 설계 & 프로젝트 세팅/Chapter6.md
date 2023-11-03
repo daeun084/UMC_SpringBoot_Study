@@ -23,19 +23,36 @@ REST 방식으로 통신할 때 필요한 작업을 표시하는 방식으로, �
 - PATCH -> 갱신(일부)<br>
 - DELETE -> 삭제 <br><br><br>
 **간단한 예제를 먼저 살펴보겠습니다.**<br>
-서버의 도메인 주소가 https://umc.com일 때, 사용자가 해당 주소에서 로그인을 하는 api endpoint는 <br> **POST/https://umc.com/users/login **로 표시할 수 있습니다. <br>
+서버의 도메인 주소가 https://umc.com일 때, 사용자가 해당 주소에서 로그인을 하는 api endpoint는 <br> 
+`POST/https://umc.com/users/login`로 표시할 수 있습니다. <br>
 
 end point로는 api가 어떤 동작을 수행할 것인지 쉽게 알 수 있습니다. <br>
 그러나, 실제 어떤 정보를 가지고 해당 동작을 수행할 것인지는 알 수 없죠. <br>
 이러한 실제 데이터들을 사용하기 위해, 세부적인 API 설계가 필요합니다 <br>
-
+<br>
 <hr>
 
 ## 세부적인 API 설계
 ### 1️⃣ path variable
-api endpoint에 속하는 요소로, **하나의 특정 대상을 식별**할 때, {}로 식별 값을 넣어 서버에 전달하는 역할을 합니다. <br>
+유일하게 api endpoint에 속하는 요소로, **하나의 특정 대상을 식별**할 때, {}로 식별 값을 넣어 서버에 전달하는 역할을 합니다. <br>
 `GET/users/articles/{articleId}` <br><br>
 
 ### 2️⃣ query string
+보통 **검색 조회 + `GET`요청** 때 자주 사용되는 요소로, <br>
+`GET/users/articles?name=umc`와 같이 name이 umc인 글들을 찾는 코드를 작성할 수 있습니다. <br><br>
+⚠️ 쿼리 스트링은 end point가 아니므로, api endpoint 자체는 `GET/users/articles`로 작성해야 한다고 합니다! <br>
+
+
 ### 3️⃣ request body
+POST 방식을 사용해 데이터들을 서버에 전송할 때, 데이터를 URL에 그대로 노출하는 것은 굉장히 위험할 수 있습니다. <br>
+따라서 이러한 위험을 막기 위해, **Request Body**를 사용해 데이터를 **JSON** 형식 또는 **Form-Data** 형식으로 전달할 수 있습니다. <br>
+
 ### 4️⃣ request header
+header는 데이터 **전송과 관련된 기타 정보들**(메타 데이터)이 담기는 부분입니다. <br>
+body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기도 합니다. <br>
+<br><br><br><hr>
+
+# WorkBook
+
+
+
