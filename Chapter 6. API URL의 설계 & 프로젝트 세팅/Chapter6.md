@@ -59,9 +59,6 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 - API Endpoint <br>
 `GET /mission` <br>
 - RequestBody <br>
-```json
-
-``` <br>
 - RequestHeader <br>
 - QueryString
 <br><br>
@@ -75,23 +72,17 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
     "contents" : "good" //리뷰내용
     "image" : "이미지파일" //
     "create_time" : "2023.11.03"
-
-//작성자에 대한 유저id를 넣어야 하는지
     "user-id" : "dooly"
-//어떤 가게에 대한 리뷰인지 가게id를 넣어야 하는지
     "store-id" : "stone"
-``` <br>
+``` 
 - RequestHeader <br>
 - QueryString 
 <br><br>
 
 ### ✅ 미션 목록 조회
 - API Endpoint <br>
-`` <br>
-- RequestBody <br>
-```json
 
-``` <br>
+- RequestBody <br>
 - RequestHeader <br>
 - QueryString
 <br><br>
@@ -103,7 +94,7 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 ```json
     "status" : "SUCCESS"
     "update-time" : "2023.11.03"
-``` <br>
+``` 
 - RequestHeader <br>
 - QueryString
 <br><br>
@@ -118,10 +109,11 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
     "gender" : "Female"
     "birth" : "1900.01.01"
     "address" : "Busan"
-``` <br>
+``` 
 - RequestHeader <br>
 - QueryString
 <br><br>
+
 
 
 
