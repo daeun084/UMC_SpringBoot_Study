@@ -53,6 +53,75 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 <br><br><br><hr>
 
 # WorkBook
+**API Endpoint, Request Body, Request Header, query String, Path variable**이 포함된 간단한 API 명세서 만들기 <br><br>
+
+### ✅ 홈 화면
+- API Endpoint <br>
+`GET /mission` <br>
+- RequestBody <br>
+```json
+
+``` <br>
+- RequestHeader <br>
+- QueryString
+<br><br>
+
+### ✅ 마이 페이지 리뷰 작성
+- API Endpoint <br>
+`POST /review/` <br>
+- RequestBody <br>
+```json
+    "stars" : "4" //별점
+    "contents" : "good" //리뷰내용
+    "image" : "이미지파일" //
+    "create_time" : "2023.11.03"
+
+//작성자에 대한 유저id를 넣어야 하는지
+    "user-id" : "dooly"
+//어떤 가게에 대한 리뷰인지 가게id를 넣어야 하는지
+    "store-id" : "stone"
+``` <br>
+- RequestHeader <br>
+- QueryString 
+<br><br>
+
+### ✅ 미션 목록 조회
+- API Endpoint <br>
+`` <br>
+- RequestBody <br>
+```json
+
+``` <br>
+- RequestHeader <br>
+- QueryString
+<br><br>
+
+### ✅ 미션 성공 누르기
+- API Endpoint <br>
+`PATCH/usermission/{usermission-id}` <br>
+- RequestBody <br>
+```json
+    "status" : "SUCCESS"
+    "update-time" : "2023.11.03"
+``` <br>
+- RequestHeader <br>
+- QueryString
+<br><br>
+
+### ✅ 회원 가입하기
+소셜로그인 고려X
+- API Endpoint <br>
+`POST /users` <br>
+- RequestBody <br>
+```json
+    "name" : "Dooly"
+    "gender" : "Female"
+    "birth" : "1900.01.01"
+    "address" : "Busan"
+``` <br>
+- RequestHeader <br>
+- QueryString
+<br><br>
 
 
 

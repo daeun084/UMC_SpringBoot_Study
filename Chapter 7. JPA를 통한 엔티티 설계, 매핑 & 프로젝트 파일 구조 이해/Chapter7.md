@@ -3,6 +3,7 @@
 
 
 <br>
+
 # WorkBook
 
 ### ✅ 프로젝트 생성
@@ -20,17 +21,17 @@ RDS DB와 로컬 mysql 중 편한 DB를 사용하면 되는데, 저는 mysql을 
     ![mysql_install](../Image/Chapter7/mysql_install.png) <br>
 - mysql security 설정 <br>
     초기 설정의 경우, 사용자 비밀번호가 설정되어있지 않아 mysql 서비스는 root 비밀번호 없이 실행됩니다 <br>
-    `mysql_secure_installation` 명령어를 통해 보안을 위한 root 비밀번호를 설정할 수 있습니다 <br>
-        ![mysql_secure](../Image/Chapter7/mysql_secure.png) <br> 
+    `mysql_secure_installation` 명령어를 통해 보안을 위한 root 비밀번호를 설정할 수 있습니다 <br><br>
+        ![mysql_secure](../Image/Chapter7/mysql_secure.png) <br><br> 
 - mysql 로그인 <br>
-    비밀번호 설정을 마쳤다면, `mysql -u root -p` 명령어를 사용해 mysql에 root 계정으로 로그인할 수 있습니다 <br>
-    ![mysql_login](../Image/Chapter7/mysql_login.png)
-- mysql db 준비
-    mysql 설치를 끝냈다면, **`study`라는 이름으로 db를 만들어줍니다** <br> 
+    비밀번호 설정을 마쳤다면, `mysql -u root -p` 명령어를 사용해 mysql에 root 계정으로 로그인할 수 있습니다 <br><br>
+    ![mysql_login](../Image/Chapter7/mysql_login.png) <br><br>
+- mysql db 준비 <br>
+    mysql 설치를 끝냈다면, **`study`라는 이름으로 db를 만들어줍니다** <br> <br>
         ![make_db](../Image/Chapter7/make_db.png)
     <br><br>
     build.gradle에 `runtimeOnly 'com.mysql:mysql-connector-j'` 를 넣어 의존성 관계를 추가해주고, <br>
-    db 연결을 위해 프로젝트에 `application.yml`을 추가해줍니다 <br>
+    db 연결을 위해 프로젝트에 `application.yml`을 추가해줍니다 <br><br>
     ```
     spring:
   datasource: 
