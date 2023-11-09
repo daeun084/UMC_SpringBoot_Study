@@ -3,13 +3,14 @@
 
 
 <br>
-#WorkBook
+# WorkBook
 
 ### ✅ 프로젝트 생성
 - `UMC_SpringBoot_Mission` 이라는 SpringBoot project 생성
 - 디렉토리 컨벤션  <br>
 ![directory](../Image/Chapter7/directory.png)
 <br>
+
 ### ✅ DB 준비
 RDS DB와 로컬 mysql 중 편한 DB를 사용하면 되는데, 저는 mysql을 사용해서 실습을 진행하도록 하겠습니다 <br>
 - mysql 설치 <br>
