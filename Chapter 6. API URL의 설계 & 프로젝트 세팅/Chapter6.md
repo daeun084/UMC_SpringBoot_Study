@@ -57,10 +57,34 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 
 ### ✅ 홈 화면
 - API Endpoint <br>
-`GET /mission` <br>
-- RequestBody <br>
-- RequestHeader <br>
-- QueryString
+`GET /api/home` <br>
+- ResponseBody <br>
+```json
+{
+    "address" : "안암동"
+    "missions" : [
+        {
+            "mission_id" : "1"
+            "store_name" : "반이학생마라탕" //가게 이름 
+            "region_name" : " " //지역 이름
+            "deadline" : "7" //마감 기한
+            "content" : "10,000원 이상의 식사" //미션 내용
+            "point" : "500" //포인트
+            "category" : "중식당" //식당 카테고리
+        },
+        {
+            "mission_id" : "2"
+            "store_name" : "반이학생마라탕"
+            "region_name" : " "
+            "deadline" : "7"
+            "content" : "10,000원 이상의 식사"
+            "point" : "500"
+            "category" : "중식당"
+        }
+    ]
+}
+```
+
 <br><br>
 
 ### ✅ 마이 페이지 리뷰 작성
@@ -68,23 +92,46 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 `POST /review/` <br>
 - RequestBody <br>
 ```json
-    "stars" : "4" //별점
-    "contents" : "good" //리뷰내용
-    "image" : "이미지파일" //
-    "create_time" : "2023.11.03"
-    "user-id" : "dooly"
-    "store-id" : "stone"
+    {
+    "review_id" : "1"
+    "user-id" : "닉네임1234"
+    "stars" : "4.5" //별점
+    "contents" : "음 너무 맛있어요 포인트도 얻고 ..." //리뷰내용
+    "image" : "이미지파일" 
+    "create_time" : "2022.05.14"
+    "store-name" : "반이학생마라탕마라반"
+}
 ``` 
-- RequestHeader <br>
-- QueryString 
+
 <br><br>
 
 ### ✅ 미션 목록 조회
 - API Endpoint <br>
+`GET /api/missions` <br>
+- ResponseBody <br>
+```json
+{
+    "missions" : [
+        {
+            "mission_id" : "1"
+            "store_name" : "반이학생마라탕" //가게 이름 
+            "region_name" : " " //지역 이름
+            "deadline" : "7" //마감 기한
+            "content" : "10,000원 이상의 식사" //미션 내용
+            "point" : "500" //포인트
+        },
+        {
+            "mission_id" : "2"
+            "store_name" : "반이학생마라탕" //가게 이름 
+            "region_name" : " " //지역 이름
+            "deadline" : "7" //마감 기한
+            "content" : "10,000원 이상의 식사" //미션 내용
+            "point" : "500" //포인트
+        }
+    ]
+}
+```
 
-- RequestBody <br>
-- RequestHeader <br>
-- QueryString
 <br><br>
 
 ### ✅ 미션 성공 누르기
@@ -93,25 +140,30 @@ body에 담기는 데이터의 형식 혹은 데이터, 혹은 토큰을 담기�
 - RequestBody <br>
 ```json
     "status" : "SUCCESS"
-    "update-time" : "2023.11.03"
 ``` 
-- RequestHeader <br>
-- QueryString
+
 <br><br>
 
 ### ✅ 회원 가입하기
 소셜로그인 고려X
 - API Endpoint <br>
-`POST /users` <br>
+`POST /api/sign` <br>
 - RequestBody <br>
 ```json
     "name" : "Dooly"
     "gender" : "Female"
     "birth" : "1900.01.01"
     "address" : "Busan"
+    "phone_num" : "010-0101-1010"
+    "prefer_food" : ["방어", "닭발", "초밥"]
 ``` 
 - RequestHeader <br>
-- QueryString
+```json
+{
+    "user_id" : "1"
+    "token" :
+}
+```
 <br><br>
 
 
