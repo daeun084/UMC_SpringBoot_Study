@@ -66,17 +66,17 @@ name, email, number처럼 사용자마다 각각의 값이 존재하고, 개발�
 그러나 **성별, 미션 성공 유무, 로그인 타입** 등 값의 종류가 한정되어있는 변수들이 가끔 존재합니다 <br>
 이러한 변수들은 enum 타입으로 파일을 따로 만들어 주는게 더 편리하다고 합니다! <br>
 저는 3가지의 enum 파일을 만들어 enums 라는 패키지에 따로 저장해주었습니다 <br>
-- ```java
+```java
 public enum MissionStatus {
     CHALLENGING, COMPLETE
 }
 ```
-- ```java
+```java
 public enum LoginType {
     KAKAO, APPLE, NAVER, GOOGLE
 }
 ```
-- ```java
+```java
 public enum Gender {
     MALE, FEMALE
 }
@@ -84,7 +84,28 @@ public enum Gender {
 
 <br>
 
-### ✅ Member class  
+### ✅ Base Entity
+모든 테이블에는 `created_at`, `updated_at`필드가 존재합니다 <br>
+이 두가지 필드를 모든 테이블에 각각 추가하기에는 너무 번거로우므로, `Base Entity`를 만들어 <br>
+각 엔티티가 이 파일을 상속받도록 설정해 `created_at`, `updated_at` 필드를 손쉽게 추가할 수 있습니다‼️ <br>
+`common`패키지를 만들어 그 내부에 Base Entity를 만들어 줍니다 <br>
+```java
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@Getter
+public abstract class BaseEntity {
+
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+}
+```
+
+<br>
+
+### ✅ Member Entity  
 
 
 
