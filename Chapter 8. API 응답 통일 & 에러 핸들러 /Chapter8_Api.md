@@ -174,22 +174,77 @@ public class ApiResponse<T> {
     }
 ```
 
-- 통신이 성공하면,
-- 통신이 실패하면
+- 통신이 성공하면, `onSuccess()` 함수를 호출해 직접 만든 `SuccessStatus`의 _OK 상태에 대한 정보를 담아 return 해줍니다 <br>
+- 통신이 실패하면, `onFailure()`함수를 호출해 메세지와 코드, 오류 결과를 담아 return해줍니다 <br> <br><br>
 
 
 
 
 
 ### 💫 임시 API 만들기
-위에서 작성한 코드들을 바탕으로 잘 돌아가는지 테스트를 위해 임시 api를 만들어보겠습니다 🤩
+위에서 작성한 코드들을 바탕으로 잘 돌아가는지 테스트를 위해 임시 api를 만들어보겠습니다 🤩 <br>
+
+`GET /temp/test` api endpoint를 통해 <br>
+```json
+{
+	"isSuccess ": true,
+	"code" : "2000",
+	"message" : "OK",
+	"result" : 
+		{
+			"testString" : "This is test!"
+		}
+}
+``` 
+이라는 response를 받는 실습입니다 <br><br>
 
 
+1. 1️⃣ 우선 response에 관련된 DTO를 작성해줍니다 
+   ```java
+   public class TempResponse {
+        @Builder
+        @Getter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class TempTestDTO{
+            String testString;
+        }
+    }
+   ```
+   DTO는 여러 군데에서 호출되기 때문에 static class로 만들어두면 사용하기 편리하다고 합니다 <br>
+   또한 이렇게 작성된 DTO들은 추후 **빌더 패턴**을 활용해 만들어집니다 <br><br>
+2. 2️⃣ Converter을 만들어줍니다
+    ```java
+    public class TempConverter {
+        public static TempResponse.TempTestDTO toTempTestDTO(){
+            return TempResponse.TempTestDTO.builder()
+                    .testString("This is Test!")
+                    .build();
+        }
+    }
+    ```
+    converter에서는 빌더패턴을 사용해 타켓 DTO에 적절한 값들을 넣어 객체를 만들고 리턴해줍니다 <br>
+    DTO 클래스는 TempResponse 클래스에 static으로 만들어주었기에 `TempResponse.TempTestDTO` 로 클래스에 접근합니다 <br>
+    converter 메소드의 이름은 `to'DTO이름'` 으로 작성하는 것을 추천한다고 합니다 🔎 <br><br>
 
+3. 3️⃣ Controller을 작성해줍니다
+   ```java
+    @RestController
+    @RequestMapping("/temp")
+    @RequiredArgsConstructor
+    public class TempRestController {
 
+        @GetMapping("/test")
+        public ApiResponse<TempResponse.TempTestDTO> testAPI(){
+            return ApiResponse.onSuccess(TempConverter.toTempTestDTO());
+        }
+    }
+   ```
+   `/temp/test` 를 위해 `/test`를 GetMapping 하는 메소드를 만들어주었습니다 <br>
+   - 여기서 `@RestController`이란, 
+   - `@RequiredArgsConstructor`
 
-
-
+여기까지 코드를 작성해준 후 SpringBoot를 실행시켜 결과를 확인해보았습니다 <br><br>
 
 
 ### 💫 API 작동 테스트
